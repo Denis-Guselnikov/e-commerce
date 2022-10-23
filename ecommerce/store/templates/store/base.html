@@ -29,6 +29,31 @@
       return cookieValue;
     }
     const csrftoken = getToken('csrftoken');
+
+    function getCookie(name) {
+      // Разделите строку cookie и получите все индивидуальные пары ключ=значение в массиве
+      var cookieArr = document.cookie.split(";");
+
+      // Цикл по элементам массива
+      for(var i = 0; i < cookieArr.length; i++) {
+        var cookiePair = cookieArr[i].split("=");
+
+        // Удалите пробелы в начале имени файла cookie и сравните его с заданной строкой
+        if(name == cookiePair[0].trim()) {
+          // Расшифруйте значение файла cookie и верните
+          return decodeURIComponent(cookiePair[1]);
+        }
+      }
+      // Возвращает значение null, если не найдено
+      return null
+    }
+    var cart = JSON.parse(getCookie('cart'))
+    if(cart == undefined) {
+      cart = {}
+      console.log('Cart was created!')
+      document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+    }
+    console.log('Cart:', cart)
   </script>
 
 </head>
@@ -38,7 +63,7 @@
 
   <nav class="navbar navbar-expand-lg bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'store' %}">Ecom</a>
+      <a class="navbar-brand" href="{% url 'store' %}">Store</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -46,7 +71,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'store' %}">Store</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'store' %}"></a>
           </li>
         </ul>
 
