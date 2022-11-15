@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from .models import *
 import json
@@ -6,8 +7,8 @@ import datetime
 from .utils import cookieCart, cartData, guestOrder
 
 
+@login_required(login_url='/auth/login/')
 def store(request):
-
     data = cartData(request)
     cartItems = data['cartItems']    
      

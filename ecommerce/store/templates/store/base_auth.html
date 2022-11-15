@@ -66,43 +66,7 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'store' %}"></a>
-          </li>
-        </ul>
-
-        <div class="form-inline my-2 my-lg-0">
-          <!--<a href="#" class="btn btn-warning"></a>-->
-
-          <a href="{% url 'cart' %}">
-            <img id="cart-icon" src="{% static 'images/cart.png' %}">
-          </a>
-          <p id="cart-total">{{ cartItems }}</p>
-        </div>
-        <ul class="navbar-nav px-3" style="display: flex; flex-direction: row; align-items: center;">
-          <li class="nav-item  px-3 text-nowrap">
-            <span class="nav-link" href="">
-              {{request.user.username}}
-            </span>
-          </li>
-  
-          <li class="nav-item text-nowrap mt-3 ml-2">
-            <form action="{% url 'logout' %}" method="POST">
-              {% csrf_token %}
-              <input
-                class="text text-capitalize"
-                type="submit"
-                value="Выход"
-              />
-            </form>
-          </li>
-        </ul>
-
-
-      </div>
+      </button>      
     </div>
   </nav>
 
